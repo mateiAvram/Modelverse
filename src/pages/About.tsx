@@ -1,5 +1,4 @@
 import { Layout } from "@/components/app/Layout";
-import YouTubeEmbed from "@/components/app/YoutubeEmbed";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function About() {
