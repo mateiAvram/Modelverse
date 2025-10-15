@@ -9,7 +9,7 @@ on:
       - test
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,16 +25,6 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: List dist folder
-        run: ls -R ./dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
