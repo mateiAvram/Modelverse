@@ -1,5 +1,8 @@
 name: Deploy to GH-Pages for testing
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
