@@ -25,8 +25,9 @@ export function Layout({
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen w-screen overflow-auto scrollbar-hide">
+    <div className="h-screen w-screen overflow-auto scrollbar-hide flex flex-col">
       <div className="sticky top-0 z-10 h-32 px-64 py-4 flex flex-row w-full items-center-safe bg-white">
+        {/* Navigation */}
         <div className="h-full mr-auto">
           <img
             src={logo}
@@ -51,8 +52,12 @@ export function Layout({
           Contact
         </NavLink>
       </div>
-      <div className="flex flex-col gap-8 bg-gray-100">{children}</div>
+      <div className="grow flex flex-col gap-8 bg-gray-100">
+        {/* Main content */}
+        {children}
+      </div>
       <div className="h-fit flex flex-col justify-center-safe items-center-safe bg-white gap-4 p-4">
+        {/* Footer */}
         <div className="text-gray-500 text-sm">
           © 2023 - 2025. Modelverse B.V. | CoC 89447476 - All rights reserved. (
           <BuildNumber />)
