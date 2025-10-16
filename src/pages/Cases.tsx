@@ -17,6 +17,7 @@ type CaseItem = {
 export function Cases() {
   // Extracting Cases
   const cases = parse(customersFile);
+  console.log(cases);
 
   return (
     <Layout cases={true}>
@@ -52,29 +53,24 @@ export function Cases() {
           <Card className="bg-white">
             <CardContent className="grid auto-rows-fr">
               {cases.map((item: CaseItem, index: number) => (
-                <>
-                  <div
-                    key={index}
-                    className="flex flex-row gap-4 border-b-2 p-4"
-                  >
-                    <div className="basis-1/4 flex items-center-safe justify-center-safe">
-                      <img
-                        src={`${import.meta.env.BASE_URL}${item.logo}`}
-                        alt={item.name}
-                      />
-                    </div>
-                    <div className="basis-3/4 flex flex-col gap-2 justify-center-safe">
-                      <Link
-                        to={item.url}
-                        className="text-teal-500 text-3xl underline"
-                      >
-                        {item.name}
-                      </Link>
-                      <p className="text-lg">{item.about}</p>
-                      <p className="text-lg">{item.case}</p>
-                    </div>
+                <div key={index} className="flex flex-row gap-4 border-b-2 p-4">
+                  <div className="basis-1/4 flex items-center-safe justify-center-safe">
+                    <img
+                      src={`${import.meta.env.BASE_URL}${item.logo}`}
+                      alt={item.name}
+                    />
                   </div>
-                </>
+                  <div className="basis-3/4 flex flex-col gap-2 justify-center-safe">
+                    <Link
+                      to={item.url}
+                      className="text-teal-500 text-3xl underline"
+                    >
+                      {item.name}
+                    </Link>
+                    <p className="text-lg">{item.about}</p>
+                    <p className="text-lg">{item.case}</p>
+                  </div>
+                </div>
               ))}
             </CardContent>
           </Card>

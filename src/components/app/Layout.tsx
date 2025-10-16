@@ -2,8 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { NavLink } from "./NavLink";
 import { BuildNumber } from "./BuildNumber";
 
+import { parse } from "yaml";
+
 // Assets import
 import logo from "@/assets/logo.png";
+import footerFile from "@/data/footer.yaml?raw";
+
+type Footer = {
+  dob: string;
+  company: string;
+  cocNumber: string;
+  linkedinUrl: string;
+};
 
 type LayoutProps = {
   children?: React.ReactNode;
@@ -23,6 +33,8 @@ export function Layout({
   contact = false,
 }: LayoutProps) {
   const navigate = useNavigate();
+  const footer: Footer = parse(footerFile);
+  const year: number = new Date().getFullYear();
 
   return (
     <div className="h-screen w-screen overflow-auto scrollbar-hide flex flex-col">
@@ -59,7 +71,8 @@ export function Layout({
       <div className="h-fit flex flex-col justify-center-safe items-center-safe bg-white gap-4 p-4">
         {/* Footer */}
         <div className="text-gray-500 text-sm">
-          © 2023 - 2025. Modelverse B.V. | CoC 89447476 - All rights reserved. (
+          © {footer.dob} - {year}. {footer.company} | Coc {footer.cocNumber} -
+          All rights reserved. (
           <BuildNumber />)
         </div>
         <div className="flex flex-row gap-4 text-teal-500 items-center-safe justify-center-safe">
@@ -84,10 +97,7 @@ export function Layout({
           </button>
           <button
             className="cursor-pointer"
-            onClick={() =>
-              (window.location.href =
-                "https://www.linkedin.com/company/modelverse/")
-            }
+            onClick={() => (window.location.href = footer.linkedinUrl)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
