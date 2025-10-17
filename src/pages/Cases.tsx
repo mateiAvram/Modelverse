@@ -1,10 +1,11 @@
-import { Layout } from "@/components/app/layout";
-import YouTubeEmbed from "@/components/app/embed/youtubeEmbed";
-import { Card, CardContent } from "@/components/ui/card";
-import customersFile from "@/data/customers.yaml?raw";
-import { Link } from "react-router-dom";
+import { Layout } from '@/components/app/layout';
+import YouTubeEmbed from '@/components/app/embed/youtubeEmbed';
+import { Card, CardContent } from '@/components/ui/card';
+import customersFile from '@/data/customers.yaml?raw';
+import { Link } from 'react-router-dom';
 
-import { parse } from "yaml";
+import { parse } from 'yaml';
+import { Banner } from '@/components/app/content/banner';
 
 type CaseItem = {
   name: string;
@@ -14,26 +15,23 @@ type CaseItem = {
   url: string;
 };
 
+const casesBanner = (
+  <Banner>
+    <h1 className="text-5xl font-bold text-white">Customer Cases</h1>
+    <p className="text-xl text-white">
+      Discover how we've helped our clients innovate and grow.
+    </p>
+  </Banner>
+);
+
 export function Cases() {
   // Extracting Cases
   const cases = parse(customersFile);
 
   return (
-    <Layout cases={true}>
-      {/* Hero */}
-      <Card className="border-0 rounded-none bg-teal-500 banner">
-        <CardContent>
-          <div className="flex flex-col justify-center-safe items-center-safe gap-8">
-            <h1 className="text-white text-5xl font-bold">Customer Cases</h1>
-            <p className="text-white text-xl">
-              Discover how we've helped our clients innovate and grow.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
+    <Layout cases={true} banner={casesBanner}>
       {/* Main content */}
-      <div className="grow flex flex-col mx-96 items-center-safe gap-4">
+      <div className="flex grow flex-col items-center-safe gap-4 px-8 text-center md:px-128">
         <YouTubeEmbed
           videoId="KO0yNnQ8zbQ"
           title="​LeydenJar protects IP with help of Modelverse"
@@ -41,28 +39,34 @@ export function Cases() {
         <p className="text-xl italic">
           Reshma and Team has helped us to close our security gaps.
         </p>
-        <p className="text-xl italic font-bold">
+        <p className="text-xl font-bold italic">
           –Christiaan Rood, CEO, LeydenJar Technologies
         </p>
       </div>
 
       {/* Hero */}
-      <Card className="border-0 rounded-none bg-gray-200 px-64">
+      <Card className="rounded-none border-0 bg-gray-200 md:px-96">
         <CardContent>
           <Card className="bg-white">
-            <CardContent className="grid auto-rows-fr">
+            <CardContent className="flex flex-col">
               {cases.map((item: CaseItem, index: number) => (
-                <div key={index} className="flex flex-row gap-4 border-b-2 p-4">
-                  <div className="basis-1/4 flex items-center-safe justify-center-safe">
+                <div
+                  key={index}
+                  className="flex flex-row flex-wrap gap-8 border-b-2 p-4 md:gap-4"
+                >
+                  <div
+                    className="flex w-full items-center-safe md:basis-24/100 md:justify-center-safe"
+                    onClick={() => (window.location.href = item.url)}
+                  >
                     <img
                       src={`${import.meta.env.BASE_URL}${item.logo}`}
                       alt={item.name}
                     />
                   </div>
-                  <div className="basis-3/4 flex flex-col gap-2 justify-center-safe">
+                  <div className="flex w-full flex-col justify-center-safe gap-2 md:basis-74/100">
                     <Link
                       to={item.url}
-                      className="text-teal-500 text-3xl underline"
+                      className="hidden text-3xl text-teal-500 underline md:inline"
                     >
                       {item.name}
                     </Link>

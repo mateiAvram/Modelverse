@@ -5,8 +5,3 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
-.banner {
-  justify-content: center;
-  height: calc(var(--spacing) * 64);
-}

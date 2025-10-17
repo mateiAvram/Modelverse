@@ -1,9 +1,10 @@
-import { Layout } from "@/components/app/layout";
-import teamMembersFile from "@/data/team-members.yaml?raw";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Layout } from '@/components/app/layout';
+import teamMembersFile from '@/data/team-members.yaml?raw';
+import { Card, CardContent } from '@/components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-import { parse } from "yaml";
+import { parse } from 'yaml';
+import { Banner } from '@/components/app/content/banner';
 
 type Member = {
   name: string;
@@ -17,33 +18,30 @@ type Team = {
   members: Member[];
 };
 
+const teamBanner = (
+  <Banner>
+    <h1 className="text-5xl font-bold text-white">Meet the Team</h1>
+    <p className="text-xl text-white">
+      The passionate individuals driving Customer Success at ValueTracks
+      Services.
+    </p>
+  </Banner>
+);
+
 export function Team() {
   const teams = parse(teamMembersFile);
 
   return (
-    <Layout team={true}>
-      {/* Hero */}
-      <Card className="border-0 rounded-none bg-teal-500 banner">
-        <CardContent>
-          <div className="flex flex-col justify-center-safe items-center-safe gap-8">
-            <h1 className="text-white text-5xl font-bold">Meet the Team</h1>
-            <p className="text-white text-xl">
-              The passionate individuals driving Customer Success at ValueTracks
-              Services.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
+    <Layout team={true} banner={teamBanner}>
       {/* Main content */}
-      <div className="flex flex-col mx-96 items-center-safe gap-4">
+      <div className="flex flex-col items-center-safe gap-4 px-8 md:px-128">
         {teams.map((team: Team, teamNumber: number) => (
           <div
             key={teamNumber}
-            className="flex flex-col items-center-safe gap-4 w-full"
+            className="flex w-full flex-col items-center-safe gap-4"
           >
             <h1 className="text-3xl font-bold">{team.name}</h1>
-            <div className="grid grid-cols-4 gap-4 w-full">
+            <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-4">
               {team.members.map((member: Member, memberNumber) => (
                 <Card
                   key={memberNumber}
@@ -51,16 +49,16 @@ export function Team() {
                 >
                   <CardContent>
                     <div className="flex flex-col gap-4">
-                      <div className="flex flex-row justify-start items-center gap-4 flex-wrap">
+                      <div className="flex flex-row flex-wrap items-center justify-start gap-4">
                         <Avatar className="size-32">
                           <AvatarImage
-                            src={member.img || ""}
+                            src={member.img || ''}
                             className="object-cover"
                           />
                           <AvatarFallback>{member.name}</AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col">
-                          <h1 className="text-teal-500 text-xl font-bold">
+                          <h1 className="text-xl font-bold text-teal-500">
                             {member.name}
                           </h1>
                           <h1 className="text-lg italic">{member.role}</h1>

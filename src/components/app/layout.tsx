@@ -1,9 +1,10 @@
-import { NavBar } from "./nav/navBar";
-import { Footer } from "./footer/footer";
-import { useEffect, useRef, useState } from "react";
-import throttle from "lodash/throttle";
+import { NavBar } from './nav/navBar';
+import { Footer } from './footer/footer';
+import { useEffect, useRef, useState } from 'react';
+import throttle from 'lodash/throttle';
 
 type LayoutProps = {
+  banner?: React.ReactNode;
   children?: React.ReactNode;
   home?: boolean;
   about?: boolean;
@@ -13,6 +14,7 @@ type LayoutProps = {
 };
 
 export function Layout({
+  banner,
   children,
   home = false,
   about = false,
@@ -24,20 +26,22 @@ export function Layout({
 
   // Scrolling behaviour
   const HEIGHT_THRESHOLD = 150;
+  const isMobile = () => window.innerWidth <= 768;
   const lastScrollY = useRef(0);
   const [isVisible, setIsVisible] = useState(true);
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
+    if (isMobile()) return;
 
     const currentScrollY = scrollRef.current.scrollTop;
 
     if (currentScrollY > HEIGHT_THRESHOLD) {
       if (lastScrollY.current < currentScrollY) {
-        console.log("down");
+        console.log('down');
         setIsVisible(false);
       } else if (lastScrollY.current > currentScrollY) {
-        console.log("up");
+        console.log('up');
         setIsVisible(true);
       }
     } else {
@@ -50,14 +54,14 @@ export function Layout({
     const currentElement = scrollRef.current;
     if (!currentElement) return;
 
-    currentElement.addEventListener("scroll", throttle(handleScroll, 150));
+    currentElement.addEventListener('scroll', throttle(handleScroll, 150));
     return () =>
-      currentElement.removeEventListener("scroll", throttle(handleScroll, 150));
+      currentElement.removeEventListener('scroll', throttle(handleScroll, 150));
   }, []);
 
   return (
     <div
-      className="h-screen w-screen overflow-auto scrollbar-hide flex flex-col"
+      className="scrollbar-hide flex h-screen w-screen flex-col overflow-auto"
       ref={scrollRef}
     >
       <NavBar
@@ -68,8 +72,9 @@ export function Layout({
         contact={contact}
         isVisible={isVisible}
       />
-      <div className="grow flex flex-col gap-8 bg-gray-100">
+      <div className="flex grow flex-col gap-8 bg-gray-100">
         {/* Main content */}
+        {banner}
         {children}
       </div>
       <Footer />

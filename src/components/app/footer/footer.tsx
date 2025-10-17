@@ -1,9 +1,9 @@
-import { BuildNumber } from "./buildNumber";
-import { parse } from "yaml";
+import { BuildNumber } from './buildNumber';
+import { parse } from 'yaml';
 
 // Data
-import footerFile from "@/data/footer.yaml?raw";
-import { useNavigate } from "react-router-dom";
+import footerFile from '@/data/footer.yaml?raw';
+import { useNavigate } from 'react-router-dom';
 
 type Info = {
   dob: string;
@@ -18,15 +18,15 @@ export function Footer() {
   const year: number = new Date().getFullYear();
 
   return (
-    <div className="h-fit flex flex-col justify-center-safe items-center-safe bg-white gap-4 p-4">
+    <div className="flex h-fit flex-col items-center-safe justify-center-safe gap-4 bg-white p-4 text-center">
       {/* Footer */}
-      <div className="text-gray-500 text-sm">
-        © {footer.dob} - {year}. {footer.company} | Coc {footer.cocNumber} - All
-        rights reserved. (
+      <div className="text-sm text-gray-500">
+        © {footer.dob} - {year}. {footer.company} | Coc {footer.cocNumber} -
+        All rights reserved. (
         <BuildNumber />)
       </div>
-      <div className="flex flex-row gap-4 text-teal-500 items-center-safe justify-center-safe">
-        <button className="cursor-pointer" onClick={() => navigate("/contact")}>
+      <div className="flex flex-row items-center-safe justify-center-safe gap-4 text-teal-500">
+        <button className="cursor-pointer" onClick={() => navigate('/contact')}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

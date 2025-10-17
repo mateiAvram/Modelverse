@@ -1,33 +1,31 @@
-import { GoogleMapEmbed } from "@/components/app/embed/googleMapEmbed";
-import { Layout } from "@/components/app/layout";
-import { Card, CardContent } from "@/components/ui/card";
-import { Link } from "react-router-dom";
+import { Banner } from '@/components/app/content/banner';
+import { GoogleMapEmbed } from '@/components/app/embed/googleMapEmbed';
+import { Layout } from '@/components/app/layout';
+import { Card, CardContent } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
+
+const contactBanner = (
+  <Banner>
+    <h1 className="text-5xl font-bold text-white">Contact Us</h1>
+    <p className="text-xl text-white">
+      We are here to help you connect, collaborate, and co-create.
+    </p>
+  </Banner>
+);
 
 export function Contact() {
-  const email: string = "partners@modelverse.online";
+  const email: string = 'partners@modelverse.online';
 
   return (
-    <Layout contact={true}>
-      {/* Hero */}
-      <Card className="border-0 rounded-none bg-teal-500 banner">
-        <CardContent>
-          <div className="flex flex-col justify-center-safe items-center-safe gap-8">
-            <h1 className="text-white text-5xl font-bold">Contact Us</h1>
-            <p className="text-white text-xl">
-              We are here to help you connect, collaborate, and co-create.
-            </p>
-          </div>
-        </CardContent>
-      </Card>
-
+    <Layout contact={true} banner={contactBanner}>
       {/* Main content */}
-      <div className="grow flex flex-row flex-wrap mx-96 justify-center-safe items-center-safe gap-4">
-        <Card className="w-full md:basis-49/100 min-h-fit md:h-112">
-          <CardContent className="h-full flex flex-col gap-4">
-            <h1 className="text-amber-500 text-xl font-bold">Get in Touch</h1>
+      <div className="flex grow flex-row flex-wrap items-center-safe justify-center-safe gap-4 px-8 md:px-128">
+        <Card className="min-h-fit w-full md:h-full md:basis-49/100">
+          <CardContent className="flex h-full flex-col gap-4">
+            <h1 className="text-xl font-bold text-amber-500">Get in Touch</h1>
             <div className="text-lg">
-              Email:{" "}
-              <Link to={`malito:${email}`} className="underline text-teal-500">
+              Email:{' '}
+              <Link to={`malito:${email}`} className="text-teal-500 underline">
                 {email}
               </Link>
             </div>
@@ -49,30 +47,30 @@ export function Contact() {
             </p>
           </CardContent>
         </Card>
-        <Card className="w-full md:basis-49/100 min-h-fit md:h-112">
-          <CardContent className="h-full flex flex-col gap-4">
-            <h1 className="text-amber-500 text-xl font-bold">Directions</h1>
+        <Card className="min-h-fit w-full md:h-full md:basis-49/100">
+          <CardContent className="flex h-full flex-col gap-4">
+            <h1 className="text-xl font-bold text-amber-500">Directions</h1>
             <GoogleMapEmbed></GoogleMapEmbed>
             <div className="text-lg">
               Parking options: limited space is available in the underground HSD
-              Campus garage upon request. Alternatively, nearby garages are:{" "}
+              Campus garage upon request. Alternatively, nearby garages are:{' '}
               <Link
                 to="https://maps-web.parkbee.com/nl/pages/garage-details/2281d136-a100-45f6-85a1-9475799c362e"
-                className="underline text-teal-500"
+                className="text-teal-500 underline"
               >
                 Parkbee
               </Link>
-              ,{" "}
+              ,{' '}
               <Link
                 to="https://www.q-park.nl/nl-nl/parkeren/den-haag/p-r-laan-van-noi/"
-                className="underline text-teal-500"
+                className="text-teal-500 underline"
               >
                 Parking P+R Laan van NOI
-              </Link>{" "}
-              or at{" "}
+              </Link>{' '}
+              or at{' '}
               <Link
                 to="https://www.interparking.nl/nl-NL/find-parking/WTCTheHague/"
-                className="underline text-teal-500"
+                className="text-teal-500 underline"
               >
                 WTC building/NH Hotel.
               </Link>

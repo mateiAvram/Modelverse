@@ -1,54 +1,50 @@
-import { Layout } from "@/components/app/layout";
-import YouTubeEmbed from "@/components/app/embed/youtubeEmbed";
-import { Card, CardContent } from "@/components/ui/card";
+import { Layout } from '@/components/app/layout';
+import YouTubeEmbed from '@/components/app/embed/youtubeEmbed';
+import { Card, CardContent } from '@/components/ui/card';
+import { Banner } from '@/components/app/content/banner';
+
+const homeBanner = (
+  <Banner>
+    <h1 className="text-5xl font-bold text-white">Secure Your Future</h1>
+    <p className="text-xl text-white">
+      Manage Security, Safety and Sustainability with the unique, modern
+      Modelverse Solution.
+    </p>
+    <button
+      className="cursor-pointer rounded-md bg-white px-4 py-2 font-bold text-teal-500 hover:bg-gray-200"
+      onClick={() =>
+        (window.location.href =
+          'https://outlook.office.com/bookwithme/user/d81d78745f8047d1a0ec05a07d8d40d6@modelverse.online/meetingtype/HEkH_Hmwx06JvFc-tP4ZJw2?anonymous')
+      }
+    >
+      Book a Demo
+    </button>
+  </Banner>
+);
 
 export function Home() {
   return (
-    <Layout home={true}>
-      {/* Hero */}
-      <Card className="border-0 rounded-none bg-teal-500 banner">
-        <CardContent>
-          <div className="flex flex-col justify-center-safe items-center-safe gap-8">
-            <h1 className="text-white text-5xl font-bold">
-              Secure Your Future
-            </h1>
-            <p className="text-white text-xl">
-              Manage Security, Safety and Sustainability with the unique, modern
-              Modelverse Solution.
-            </p>
-            <button
-              className="py-2 px-4 rounded-md bg-white text-teal-500 font-bold hover:bg-gray-200 cursor-pointer"
-              onClick={() =>
-                (window.location.href =
-                  "https://outlook.office.com/bookwithme/user/d81d78745f8047d1a0ec05a07d8d40d6@modelverse.online/meetingtype/HEkH_Hmwx06JvFc-tP4ZJw2?anonymous")
-              }
-            >
-              Book a Demo
-            </button>
-          </div>
-        </CardContent>
-      </Card>
-
+    <Layout home={true} banner={homeBanner}>
       {/* Main content */}
-      <div className="grow flex flex-col mx-96 items-center-safe gap-4">
+      <div className="flex grow flex-col items-center-safe gap-4 px-8 text-center md:px-128">
         <YouTubeEmbed videoId="XEPf418PJFU" title="Fellowmind Testimonial" />
         <p className="text-xl italic">
           Modelverse has transformed our approach to cybersecurity risk
           management.
         </p>
-        <p className="text-xl italic font-bold">
+        <p className="text-xl font-bold italic">
           –David Warnink, CIO, Fellowmind
         </p>
       </div>
 
       {/* Hero */}
-      <Card className="border-0 rounded-none bg-gray-200 px-64">
+      <Card className="rounded-none border-0 bg-gray-200 md:px-96">
         <CardContent>
-          <div className="flex flex-row gap-8">
-            <Card className="border-0 bg-white basis-1/3">
+          <div className="flex flex-row flex-wrap gap-8">
+            <Card className="w-full border-0 bg-white md:basis-1/3">
               <CardContent>
                 <div className="flex flex-col gap-4">
-                  <h1 className="text-amber-500 text-xl font-bold">
+                  <h1 className="text-xl font-bold text-amber-500">
                     Strategic Risks & Opportunities
                   </h1>
                   <p className="text-lg">
@@ -58,10 +54,10 @@ export function Home() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-0 bg-white basis-1/3">
+            <Card className="w-full border-0 bg-white md:basis-1/3">
               <CardContent>
                 <div className="flex flex-col gap-4">
-                  <h1 className="text-amber-500 text-xl font-bold">
+                  <h1 className="text-xl font-bold text-amber-500">
                     Efficient Control and Assurance
                   </h1>
                   <p className="text-lg">
@@ -71,10 +67,10 @@ export function Home() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="border-0  bg-white basis-1/3">
+            <Card className="w-full border-0 bg-white md:basis-1/3">
               <CardContent>
                 <div className="flex flex-col gap-4">
-                  <h1 className="text-amber-500 text-xl font-bold">
+                  <h1 className="text-xl font-bold text-amber-500">
                     Seamless Integration
                   </h1>
                   <p className="text-lg">

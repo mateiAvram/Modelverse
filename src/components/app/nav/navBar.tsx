@@ -1,8 +1,9 @@
-import { NavLink } from "./navLink";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from './navLink';
+import { useNavigate } from 'react-router-dom';
 
 // Assets
-import logo from "@/assets/logo.png";
+import logo from '@/assets/logo.png';
+import { useState } from 'react';
 
 type NavProps = {
   home: boolean;
@@ -23,37 +24,65 @@ export function NavBar({
 }: NavProps) {
   const navigate = useNavigate();
 
+  // Mobile Phone behaviour
+  const [extendedMenu, setExtenedMenu] = useState(false);
+  const handleMenuBtn = () => {
+    if (extendedMenu) {
+      setExtenedMenu(false);
+    } else {
+      setExtenedMenu(true);
+    }
+  };
+
   return (
     <div
-      className={`sticky top-0 z-10 h-32 px-64 py-4 flex flex-row w-full items-center-safe bg-white transition ${
-        isVisible ? "translate-y-0" : "duration-500 -translate-y-full"
-      }`}
+      className={`sticky top-0 z-10 flex w-full flex-wrap items-center-safe bg-white p-4 md:h-48 md:px-96 md:py-4 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full duration-500'
+      } ${!extendedMenu ? 'h-32' : 'h-96'}`}
     >
-      <div className="h-full mr-auto">
+      <div className="flex w-full flex-row justify-between p-4 text-teal-500 md:mr-auto md:w-fit md:p-0">
         <img
           src={logo}
           alt="Modelverse"
-          className="h-full w-auto object-contain block cursor-pointer"
-          onClick={() => navigate("/")}
+          className="block h-16 w-auto cursor-pointer self-center object-contain md:h-32"
+          onClick={() => navigate('/')}
         />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={2}
+          stroke="currentColor"
+          className="h-12 self-center md:hidden"
+          onClick={handleMenuBtn}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
       </div>
-
-      {/* Links */}
-      <NavLink url="/" active={home}>
-        Home
-      </NavLink>
-      <NavLink url="/about" active={about}>
-        About
-      </NavLink>
-      <NavLink url="/cases" active={cases}>
-        Cases
-      </NavLink>
-      <NavLink url="/team" active={team}>
-        Team
-      </NavLink>
-      <NavLink url="/contact" active={contact}>
-        Contact
-      </NavLink>
+      <div
+        className={`w-full flex-wrap justify-center border-t-2 p-4 transition-all duration-300 md:flex md:w-fit md:flex-row md:border-t-0 ${!extendedMenu ? 'hidden' : 'flex flex-col'}`}
+      >
+        {/* Links */}
+        <NavLink url="/" active={home}>
+          Home
+        </NavLink>
+        <NavLink url="/about" active={about}>
+          About
+        </NavLink>
+        <NavLink url="/cases" active={cases}>
+          Cases
+        </NavLink>
+        <NavLink url="/team" active={team}>
+          Team
+        </NavLink>
+        <NavLink url="/contact" active={contact}>
+          Contact
+        </NavLink>
+      </div>
     </div>
   );
 }
