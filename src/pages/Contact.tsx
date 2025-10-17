@@ -25,7 +25,7 @@ export function Contact() {
             <h1 className="text-xl font-bold text-amber-500">Get in Touch</h1>
             <div className="text-lg">
               Email:{' '}
-              <Link to={`malito:${email}`} className="text-teal-500 underline">
+              <Link to={`mailto:${email}`} className="text-teal-500 underline">
                 {email}
               </Link>
             </div>

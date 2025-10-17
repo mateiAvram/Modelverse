@@ -40,8 +40,8 @@ export function Home() {
       {/* Hero */}
       <Card className="rounded-none border-0 bg-gray-200 md:px-96">
         <CardContent>
-          <div className="flex flex-row flex-wrap gap-8">
-            <Card className="w-full border-0 bg-white md:basis-1/3">
+          <div className="flex flex-row flex-wrap justify-center-safe gap-8">
+            <Card className="w-full border-0 bg-white md:basis-30/100">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">
@@ -54,7 +54,7 @@ export function Home() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="w-full border-0 bg-white md:basis-1/3">
+            <Card className="w-full border-0 bg-white md:basis-30/100">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">
@@ -67,7 +67,7 @@ export function Home() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="w-full border-0 bg-white md:basis-1/3">
+            <Card className="w-full border-0 bg-white md:basis-30/100">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">

@@ -49,20 +49,21 @@ export function Team() {
                 >
                   <CardContent>
                     <div className="flex flex-col gap-4">
-                      <div className="flex flex-row flex-wrap items-center justify-start gap-4">
-                        <Avatar className="size-32">
-                          <AvatarImage
-                            src={member.img || ''}
-                            className="object-cover"
-                          />
-                          <AvatarFallback>{member.name}</AvatarFallback>
-                        </Avatar>
-                        <div className="flex flex-col">
-                          <h1 className="text-xl font-bold text-teal-500">
-                            {member.name}
-                          </h1>
-                          <h1 className="text-lg italic">{member.role}</h1>
-                        </div>
+                      {/* <div className="flex flex-row flex-wrap items-center justify-start gap-4">
+                        
+                      </div> */}
+                      <Avatar className="size-32">
+                        <AvatarImage
+                          src={member.img || ''}
+                          className="object-cover"
+                        />
+                        <AvatarFallback>{member.name}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col">
+                        <h1 className="text-xl font-bold text-teal-500">
+                          {member.name}
+                        </h1>
+                        <h1 className="text-lg italic">{member.role}</h1>
                       </div>
                       <p>{member.bio}</p>
                     </div>

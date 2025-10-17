@@ -26,13 +26,11 @@ export function Layout({
 
   // Scrolling behaviour
   const HEIGHT_THRESHOLD = 150;
-  const isMobile = () => window.innerWidth <= 768;
   const lastScrollY = useRef(0);
   const [isVisible, setIsVisible] = useState(true);
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
-    if (isMobile()) return;
 
     const currentScrollY = scrollRef.current.scrollTop;
 
@@ -61,7 +59,7 @@ export function Layout({
 
   return (
     <div
-      className="scrollbar-hide flex h-screen w-screen flex-col overflow-auto"
+      className="scrollbar-hide flex h-screen w-screen flex-col overflow-auto bg-teal-500"
       ref={scrollRef}
     >
       <NavBar

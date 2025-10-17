@@ -36,8 +36,10 @@ export function NavBar({
 
   return (
     <div
-      className={`sticky top-0 z-10 flex w-full flex-wrap items-center-safe bg-white p-4 md:h-48 md:px-96 md:py-4 ${
-        isVisible ? 'translate-y-0' : '-translate-y-full duration-500'
+      className={`sticky top-0 z-10 flex w-full flex-wrap items-center-safe border-b-2 bg-white p-4 md:h-48 md:px-96 md:py-4 ${
+        isVisible
+          ? 'md:translate-y-0 md:duration-500'
+          : 'md:-translate-y-full md:duration-500'
       } ${!extendedMenu ? 'h-32' : 'h-96'}`}
     >
       <div className="flex w-full flex-row justify-between p-4 text-teal-500 md:mr-auto md:w-fit md:p-0">
@@ -64,7 +66,7 @@ export function NavBar({
         </svg>
       </div>
       <div
-        className={`w-full flex-wrap justify-center border-t-2 p-4 transition-all duration-300 md:flex md:w-fit md:flex-row md:border-t-0 ${!extendedMenu ? 'hidden' : 'flex flex-col'}`}
+        className={`w-full flex-wrap justify-center border-y-2 p-4 transition-all duration-300 md:flex md:w-fit md:flex-row md:border-y-0 ${!extendedMenu ? 'hidden' : 'flex flex-col'}`}
       >
         {/* Links */}
         <NavLink url="/" active={home}>
