@@ -19,8 +19,8 @@ export function Contact() {
   return (
     <Layout contact={true} banner={contactBanner}>
       {/* Main content */}
-      <div className="flex grow flex-row flex-wrap items-center-safe justify-center-safe gap-4 px-6 xl:px-64 2xl:px-96">
-        <Card className="min-h-fit w-full lg:h-full lg:basis-49/100">
+      <div className="grid grow grid-cols-1 items-center-safe gap-4 px-6 lg:grid-cols-2 xl:px-64 2xl:px-96">
+        <Card className="h-fit w-full lg:basis-49/100">
           <CardContent className="flex h-full flex-col gap-4">
             <h1 className="text-xl font-bold text-amber-500">Get in Touch</h1>
             <div className="text-lg">
@@ -47,7 +47,7 @@ export function Contact() {
             </p>
           </CardContent>
         </Card>
-        <Card className="min-h-fit w-full lg:h-full lg:basis-49/100">
+        <Card className="h-fit w-full lg:basis-49/100">
           <CardContent className="flex h-full flex-col gap-4">
             <h1 className="text-xl font-bold text-amber-500">Directions</h1>
             <GoogleMapEmbed></GoogleMapEmbed>

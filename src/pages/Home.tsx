@@ -26,7 +26,7 @@ export function Home() {
   return (
     <Layout home={true} banner={homeBanner}>
       {/* Main content */}
-      <div className="flex grow flex-col items-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-128">
+      <div className="flex grow flex-col items-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-96">
         <YouTubeEmbed videoId="XEPf418PJFU" title="Fellowmind Testimonial" />
         <p className="text-xl italic">
           Modelverse has transformed our approach to cybersecurity risk

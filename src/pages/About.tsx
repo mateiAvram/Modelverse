@@ -28,7 +28,7 @@ export function About() {
   return (
     <Layout about={true} banner={aboutBanner}>
       {/* Main content */}
-      <div className="flex grow flex-col items-center-safe justify-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-128">
+      <div className="flex grow flex-col items-center-safe justify-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-96">
         <p className="text-xl italic">
           Modelverse is truly a gamechanger. It is a robust platform supporting
           my clients.

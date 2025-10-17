@@ -31,7 +31,7 @@ export function Cases() {
   return (
     <Layout cases={true} banner={casesBanner}>
       {/* Main content */}
-      <div className="flex grow flex-col items-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-128">
+      <div className="flex grow flex-col items-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-96">
         <YouTubeEmbed
           videoId="KO0yNnQ8zbQ"
           title="​LeydenJar protects IP with help of Modelverse"
