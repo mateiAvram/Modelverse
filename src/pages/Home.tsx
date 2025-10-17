@@ -26,7 +26,7 @@ export function Home() {
   return (
     <Layout home={true} banner={homeBanner}>
       {/* Main content */}
-      <div className="flex grow flex-col items-center-safe gap-4 px-8 text-center md:px-128">
+      <div className="flex grow flex-col items-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-128">
         <YouTubeEmbed videoId="XEPf418PJFU" title="Fellowmind Testimonial" />
         <p className="text-xl italic">
           Modelverse has transformed our approach to cybersecurity risk
@@ -38,9 +38,9 @@ export function Home() {
       </div>
 
       {/* Hero */}
-      <Card className="rounded-none border-0 bg-gray-200 md:px-96">
+      <Card className="rounded-none border-0 bg-gray-200 xl:px-32 2xl:px-64">
         <CardContent>
-          <div className="flex flex-row flex-wrap justify-center-safe gap-8">
+          <div className="flex flex-row flex-wrap justify-between gap-8">
             <Card className="w-full border-0 bg-white md:basis-30/100">
               <CardContent>
                 <div className="flex flex-col gap-4">

@@ -36,13 +36,13 @@ export function NavBar({
 
   return (
     <div
-      className={`relative top-0 z-10 flex w-full flex-wrap items-center-safe border-b-2 bg-white p-4 md:sticky md:h-48 md:px-96 md:py-4 ${
+      className={`relative top-0 z-10 flex w-full flex-wrap items-center-safe border-b-2 bg-white px-6 py-4 md:sticky md:h-48 xl:px-38 2xl:px-70 ${
         isVisible
           ? 'md:translate-y-0 md:duration-500'
           : 'md:-translate-y-full md:duration-500'
       } ${!extendedMenu ? 'h-32' : 'h-96'}`}
     >
-      <div className="flex w-full flex-row justify-between p-4 text-teal-500 md:mr-auto md:w-fit md:p-0">
+      <div className="flex w-full flex-row justify-between py-4 text-teal-500 md:mr-auto md:w-fit md:p-0">
         <img
           src={logo}
           alt="Modelverse"
@@ -66,7 +66,7 @@ export function NavBar({
         </svg>
       </div>
       <div
-        className={`w-full flex-wrap justify-center border-y-2 p-4 transition-all duration-300 md:flex md:w-fit md:flex-row md:border-y-0 ${!extendedMenu ? 'hidden' : 'flex flex-col'}`}
+        className={`w-full flex-wrap justify-center border-y-2 py-4 transition-all duration-300 md:flex md:w-fit md:flex-row md:border-y-0 ${!extendedMenu ? 'hidden' : 'flex flex-col'}`}
       >
         {/* Links */}
         <NavLink url="/" active={home}>

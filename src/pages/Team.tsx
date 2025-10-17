@@ -34,14 +34,14 @@ export function Team() {
   return (
     <Layout team={true} banner={teamBanner}>
       {/* Main content */}
-      <div className="flex flex-col items-center-safe gap-4 px-8 md:px-128">
+      <div className="flex flex-col items-center-safe gap-4 px-6 lg:px-32 xl:px-64 2xl:px-128">
         {teams.map((team: Team, teamNumber: number) => (
           <div
             key={teamNumber}
             className="flex w-full flex-col items-center-safe gap-4"
           >
             <h1 className="text-3xl font-bold">{team.name}</h1>
-            <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-4">
+            <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
               {team.members.map((member: Member, memberNumber) => (
                 <Card
                   key={memberNumber}

@@ -25,7 +25,7 @@ export function Layout({
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Scrolling behaviour
-  const HEIGHT_THRESHOLD = 150;
+  const HEIGHT_THRESHOLD = 0;
   const lastScrollY = useRef(0);
   const [isVisible, setIsVisible] = useState(true);
 

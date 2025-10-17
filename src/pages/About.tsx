@@ -28,7 +28,7 @@ export function About() {
   return (
     <Layout about={true} banner={aboutBanner}>
       {/* Main content */}
-      <div className="flex grow flex-col items-center-safe justify-center-safe gap-4 px-8 text-center md:px-128">
+      <div className="flex grow flex-col items-center-safe justify-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-128">
         <p className="text-xl italic">
           Modelverse is truly a gamechanger. It is a robust platform supporting
           my clients.
@@ -39,10 +39,10 @@ export function About() {
       </div>
 
       {/* Hero */}
-      <Card className="rounded-none border-0 bg-gray-200 md:px-96">
+      <Card className="rounded-none border-0 bg-gray-200 xl:px-32 2xl:px-64">
         <CardContent>
           <div className="flex flex-row flex-wrap justify-center-safe gap-8">
-            <Card className="w-full border-0 bg-white md:basis-30/100">
+            <Card className="w-full border-0 bg-white lg:basis-30/100">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">
@@ -58,7 +58,7 @@ export function About() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="w-full border-0 bg-white md:basis-30/100">
+            <Card className="w-full border-0 bg-white lg:basis-30/100">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">Our Team</h1>
@@ -78,7 +78,7 @@ export function About() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="w-full border-0 bg-white md:basis-30/100">
+            <Card className="w-full border-0 bg-white lg:basis-30/100">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">

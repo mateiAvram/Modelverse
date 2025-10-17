@@ -31,7 +31,7 @@ export function Cases() {
   return (
     <Layout cases={true} banner={casesBanner}>
       {/* Main content */}
-      <div className="flex grow flex-col items-center-safe gap-4 px-8 text-center md:px-128">
+      <div className="flex grow flex-col items-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-128">
         <YouTubeEmbed
           videoId="KO0yNnQ8zbQ"
           title="​LeydenJar protects IP with help of Modelverse"
@@ -45,7 +45,7 @@ export function Cases() {
       </div>
 
       {/* Hero */}
-      <Card className="rounded-none border-0 bg-gray-200 md:px-96">
+      <Card className="rounded-none border-0 bg-gray-200 xl:px-32 2xl:px-64">
         <CardContent>
           <Card className="bg-white">
             <CardContent className="flex flex-col">
@@ -55,7 +55,7 @@ export function Cases() {
                   className="flex flex-row flex-wrap gap-8 border-b-2 p-4 md:gap-4"
                 >
                   <div
-                    className="flex w-full items-center-safe md:basis-24/100 md:justify-center-safe"
+                    className="flex w-full items-center-safe md:basis-48/100 md:justify-center-safe lg:basis-32/100"
                     onClick={() => (window.location.href = item.url)}
                   >
                     <img
@@ -63,10 +63,10 @@ export function Cases() {
                       alt={item.name}
                     />
                   </div>
-                  <div className="flex w-full flex-col justify-center-safe gap-2 md:basis-74/100">
+                  <div className="flex w-full flex-col justify-center-safe gap-2 md:basis-48/100 lg:basis-62/100">
                     <Link
                       to={item.url}
-                      className="hidden text-3xl text-teal-500 underline md:inline"
+                      className="hidden text-3xl text-teal-500 underline lg:inline"
                     >
                       {item.name}
                     </Link>
