@@ -1,5 +1,5 @@
-import { Layout } from "@/components/app/Layout";
-import YouTubeEmbed from "@/components/app/YoutubeEmbed";
+import { Layout } from "@/components/app/layout";
+import YouTubeEmbed from "@/components/app/embed/youtubeEmbed";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function Home() {
@@ -16,7 +16,13 @@ export function Home() {
               Manage Security, Safety and Sustainability with the unique, modern
               Modelverse Solution.
             </p>
-            <button className="py-2 px-4 rounded-md bg-white text-teal-500 font-bold hover:bg-gray-200 cursor-pointer">
+            <button
+              className="py-2 px-4 rounded-md bg-white text-teal-500 font-bold hover:bg-gray-200 cursor-pointer"
+              onClick={() =>
+                (window.location.href =
+                  "https://outlook.office.com/bookwithme/user/d81d78745f8047d1a0ec05a07d8d40d6@modelverse.online/meetingtype/HEkH_Hmwx06JvFc-tP4ZJw2?anonymous")
+              }
+            >
               Book a Demo
             </button>
           </div>

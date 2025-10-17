@@ -1,4 +1,4 @@
-import { Layout } from "@/components/app/Layout";
+import { Layout } from "@/components/app/layout";
 import { Card, CardContent } from "@/components/ui/card";
 
 export function About() {
@@ -13,7 +13,13 @@ export function About() {
               Empowering organizations to navigate (cyber) security and
               sustainability risks with confidence and clarity.
             </p>
-            <button className="py-2 px-4 rounded-md bg-white text-teal-500 font-bold hover:bg-gray-200 cursor-pointer">
+            <button
+              className="py-2 px-4 rounded-md bg-white text-teal-500 font-bold hover:bg-gray-200 cursor-pointer"
+              onClick={() =>
+                (window.location.href =
+                  "https://outlook.office.com/bookwithme/user/d81d78745f8047d1a0ec05a07d8d40d6@modelverse.online/meetingtype/HEkH_Hmwx06JvFc-tP4ZJw2?anonymous")
+              }
+            >
               Talk to us
             </button>
           </div>

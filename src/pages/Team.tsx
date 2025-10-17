@@ -1,4 +1,4 @@
-import { Layout } from "@/components/app/Layout";
+import { Layout } from "@/components/app/layout";
 import teamMembersFile from "@/data/team-members.yaml?raw";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -45,7 +45,10 @@ export function Team() {
             <h1 className="text-3xl font-bold">{team.name}</h1>
             <div className="grid grid-cols-4 gap-4 w-full">
               {team.members.map((member: Member, memberNumber) => (
-                <Card key={memberNumber}>
+                <Card
+                  key={memberNumber}
+                  className="transition duration-200 ease-in-out hover:-translate-y-2"
+                >
                   <CardContent>
                     <div className="flex flex-col gap-4">
                       <div className="flex flex-row justify-start items-center gap-4 flex-wrap">

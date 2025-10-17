@@ -1,5 +1,5 @@
-import { Layout } from "@/components/app/Layout";
-import YouTubeEmbed from "@/components/app/YoutubeEmbed";
+import { Layout } from "@/components/app/layout";
+import YouTubeEmbed from "@/components/app/embed/youtubeEmbed";
 import { Card, CardContent } from "@/components/ui/card";
 import customersFile from "@/data/customers.yaml?raw";
 import { Link } from "react-router-dom";
@@ -17,7 +17,6 @@ type CaseItem = {
 export function Cases() {
   // Extracting Cases
   const cases = parse(customersFile);
-  console.log(cases);
 
   return (
     <Layout cases={true}>

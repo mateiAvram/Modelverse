@@ -1,5 +1,5 @@
-import { GoogleMapEmbed } from "@/components/app/GoogleMapEmbed";
-import { Layout } from "@/components/app/Layout";
+import { GoogleMapEmbed } from "@/components/app/embed/googleMapEmbed";
+import { Layout } from "@/components/app/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
