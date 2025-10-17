@@ -5,7 +5,7 @@ export function About() {
   return (
     <Layout about={true}>
       {/* Hero */}
-      <Card className="border-0 rounded-none bg-teal-500">
+      <Card className="border-0 rounded-none bg-teal-500 banner">
         <CardContent>
           <div className="flex flex-col justify-center-safe items-center-safe gap-8">
             <h1 className="text-white text-5xl font-bold">About Modelverse</h1>
