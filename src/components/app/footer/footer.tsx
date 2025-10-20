@@ -18,7 +18,7 @@ export function Footer() {
   const year: number = new Date().getFullYear();
 
   return (
-    <div className="flex h-fit flex-col items-center-safe justify-center-safe gap-4 bg-white p-4 text-center">
+    <div className="flex h-fit shrink-0 flex-col items-center-safe justify-center-safe gap-4 bg-white p-4 text-center">
       {/* Footer */}
       <div className="text-sm text-gray-500">
         © {footer.dob} - {year}. {footer.company} | Coc {footer.cocNumber} -

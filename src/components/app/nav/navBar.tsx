@@ -36,7 +36,7 @@ export function NavBar({
 
   return (
     <div
-      className={`relative top-0 z-10 flex w-full flex-wrap items-center-safe border-b-2 bg-white px-6 py-4 md:sticky md:h-48 xl:px-38 2xl:px-70 ${
+      className={`relative top-0 z-10 flex w-full shrink-0 flex-wrap items-center-safe border-b-2 bg-white px-6 py-4 md:sticky md:h-48 xl:px-38 2xl:px-70 ${
         isVisible
           ? 'md:translate-y-0 md:duration-500'
           : 'md:-translate-y-full md:duration-500'
