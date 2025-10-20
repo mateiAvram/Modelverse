@@ -26,7 +26,7 @@ export function Home() {
   return (
     <Layout home={true} banner={homeBanner}>
       {/* Main content */}
-      <div className="flex grow flex-col items-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-96">
+      <div className="mx-auto flex w-full grow flex-col items-center-safe justify-center-safe gap-4 px-6 text-center lg:max-w-[854px] xl:max-w-[1024px] 2xl:max-w-[1366px]">
         <YouTubeEmbed videoId="XEPf418PJFU" title="Fellowmind Testimonial" />
         <p className="text-xl italic">
           Modelverse has transformed our approach to cybersecurity risk
@@ -38,10 +38,10 @@ export function Home() {
       </div>
 
       {/* Hero */}
-      <Card className="rounded-none border-0 bg-gray-200 xl:px-32 2xl:px-64">
+      <Card className="rounded-none border-0 bg-gray-200">
         <CardContent>
-          <div className="flex flex-row flex-wrap justify-between gap-8">
-            <Card className="w-full border-0 bg-white md:basis-30/100">
+          <div className="mx-auto flex w-full flex-col justify-center-safe gap-8 md:flex-row xl:max-w-[1280px] 2xl:max-w-[1600px]">
+            <Card className="basis-1/3 border-0 bg-white">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">
@@ -54,7 +54,7 @@ export function Home() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="w-full border-0 bg-white md:basis-30/100">
+            <Card className="basis-1/3 border-0 bg-white">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">
@@ -67,7 +67,7 @@ export function Home() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="w-full border-0 bg-white md:basis-30/100">
+            <Card className="basis-1/3 border-0 bg-white">
               <CardContent>
                 <div className="flex flex-col gap-4">
                   <h1 className="text-xl font-bold text-amber-500">

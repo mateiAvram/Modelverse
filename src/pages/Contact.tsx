@@ -19,8 +19,8 @@ export function Contact() {
   return (
     <Layout contact={true} banner={contactBanner}>
       {/* Main content */}
-      <div className="flex grow items-center-safe justify-center-safe">
-        <div className="grid h-fit grid-cols-1 items-center-safe gap-4 px-6 lg:grid-cols-2 xl:px-64 2xl:px-96">
+      <div className="mx-auto flex w-full grow items-center-safe justify-center-safe lg:max-w-[854px] xl:max-w-[1024px] 2xl:max-w-[1366px]">
+        <div className="grid h-fit grid-cols-1 items-center-safe gap-4 px-6 lg:grid-cols-2">
           <Card className="h-full w-full lg:basis-49/100">
             <CardContent className="flex flex-col gap-4">
               <h1 className="text-xl font-bold text-amber-500">Get in Touch</h1>
