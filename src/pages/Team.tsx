@@ -34,7 +34,7 @@ export function Team() {
   return (
     <Layout team={true} banner={teamBanner}>
       {/* Main content */}
-      <div className="flex flex-col items-center-safe gap-4 px-6 lg:px-32 xl:px-64 2xl:px-96">
+      <div className="mx-auto flex w-full flex-col items-center-safe gap-4 px-6 lg:max-w-[854px] xl:max-w-[1024px] 2xl:max-w-[1366px]">
         {teams.map((team: Team, teamNumber: number) => (
           <div
             key={teamNumber}

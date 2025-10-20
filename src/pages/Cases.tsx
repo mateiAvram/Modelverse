@@ -31,7 +31,7 @@ export function Cases() {
   return (
     <Layout cases={true} banner={casesBanner}>
       {/* Main content */}
-      <div className="flex grow flex-col items-center-safe gap-4 px-6 text-center lg:px-32 xl:px-64 2xl:px-96">
+      <div className="mx-auto flex w-full grow flex-col items-center-safe justify-center-safe gap-4 px-6 text-center lg:max-w-[854px] xl:max-w-[1024px] 2xl:max-w-[1366px]">
         <YouTubeEmbed
           videoId="KO0yNnQ8zbQ"
           title="​LeydenJar protects IP with help of Modelverse"
@@ -45,17 +45,17 @@ export function Cases() {
       </div>
 
       {/* Hero */}
-      <Card className="rounded-none border-0 bg-gray-200 xl:px-32 2xl:px-64">
+      <Card className="rounded-none border-0 bg-gray-200">
         <CardContent>
-          <Card className="bg-white">
+          <Card className="mx-auto w-full bg-white xl:max-w-[1280px] 2xl:max-w-[1600px]">
             <CardContent className="flex flex-col">
               {cases.map((item: CaseItem, index: number) => (
                 <div
                   key={index}
-                  className="flex flex-row flex-wrap gap-8 border-b-2 p-4 md:gap-4"
+                  className="lg flex flex-col gap-8 border-b-2 p-4 md:flex-row"
                 >
                   <div
-                    className="flex w-full items-center-safe md:basis-48/100 md:justify-center-safe lg:basis-32/100"
+                    className="flex items-center-safe md:basis-1/3 md:justify-center-safe"
                     onClick={() => (window.location.href = item.url)}
                   >
                     <img
@@ -63,7 +63,7 @@ export function Cases() {
                       alt={item.name}
                     />
                   </div>
-                  <div className="flex w-full flex-col justify-center-safe gap-2 md:basis-48/100 lg:basis-62/100">
+                  <div className="flex flex-col justify-center-safe gap-2 md:basis-2/3">
                     <Link
                       to={item.url}
                       className="hidden text-3xl text-teal-500 underline lg:inline"
