@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavBar } from './app/navigation/navbar';
 import { Footer } from './app/footer/footer';
-import throttle from 'lodash/throttle';
+import { throttle } from 'lodash';
 
 type LayoutProps = {
   banner?: React.ReactNode;

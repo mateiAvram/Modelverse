@@ -65,7 +65,7 @@ export function About() {
             {item.list && (
               <ul className="list-disc pl-5">
                 {item.list.map((listItem: Message, index: number) => (
-                  <li>
+                  <li key={index}>
                     <span className="font-bold">{listItem.caption}</span>{' '}
                     {listItem.message}
                   </li>
