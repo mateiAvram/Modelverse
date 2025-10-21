@@ -1,88 +1,80 @@
-import { Layout } from '@/components/app/layout';
 import YouTubeEmbed from '@/components/app/embed/youtubeEmbed';
-import { Card, CardContent } from '@/components/ui/card';
-import { Banner } from '@/components/app/content/banner';
+import { Banner } from '@/components/app/misc/banner';
+import { Layout } from '@/components/layout';
+import infoFile from '@/data/home.yaml?raw';
+import { parse } from 'yaml';
+
+type Message = {
+  caption: string;
+  message: string;
+};
+
+type Button = {
+  text: string;
+  url: string;
+};
+
+type Info = {
+  title: string;
+  message: string;
+  button: Button;
+  list: Message[];
+};
 
 const homeBanner = (
   <Banner>
-    <h1 className="text-5xl font-bold text-white">Secure Your Future</h1>
-    <p className="text-xl text-white">
+    <h1 className="text-4xl font-bold">Secure Your Future</h1>
+    <p className="text-lg">
       Manage Security, Safety and Sustainability with the unique, modern
       Modelverse Solution.
     </p>
     <button
-      className="cursor-pointer rounded-md bg-white px-4 py-2 font-bold text-teal-500 hover:bg-gray-200"
+      className="cursor-pointer rounded-full bg-white px-4 py-2 font-bold transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/50"
       onClick={() =>
         (window.location.href =
           'https://outlook.office.com/bookwithme/user/d81d78745f8047d1a0ec05a07d8d40d6@modelverse.online/meetingtype/HEkH_Hmwx06JvFc-tP4ZJw2?anonymous')
       }
     >
-      Book a Demo
+      <div className="bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">
+        Book a Demo
+      </div>
     </button>
   </Banner>
 );
 
 export function Home() {
+  const info = parse(infoFile);
+
   return (
     <Layout home={true} banner={homeBanner}>
-      {/* Main content */}
-      <div className="mx-auto flex w-full grow flex-col items-center-safe justify-center-safe gap-4 px-6 text-center lg:max-w-[854px] xl:max-w-[1024px] 2xl:max-w-[1366px]">
-        <YouTubeEmbed videoId="XEPf418PJFU" title="Fellowmind Testimonial" />
-        <p className="text-xl italic">
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4">
+        <h1 className="text-center text-4xl font-bold">Why Modelverse?</h1>
+        {info.map((item: Info, index: number) => (
+          <div
+            key={index}
+            className="group flex w-full flex-col items-center-safe justify-center-safe gap-8 rounded-lg bg-gradient-to-br from-green-500/20 to-teal-500/20 p-8"
+          >
+            <h1 className="group relative w-75/100 text-center text-2xl text-black">
+              <span className="relative z-10 font-bold text-amber-500">
+                {item.title}
+              </span>
+            </h1>
+            {item.message && <p className="text-sm">{item.message}</p>}
+          </div>
+        ))}
+      </div>
+
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4 text-center">
+        <h1 className="text-center text-4xl font-bold">Testimonial</h1>
+        <p className="italic">
           Modelverse has transformed our approach to cybersecurity risk
           management.
         </p>
-        <p className="text-xl font-bold italic">
+        <p className="text-lg font-bold italic">
           –David Warnink, CIO, Fellowmind
         </p>
+        <YouTubeEmbed videoId="XEPf418PJFU" title="Fellowmind Testimonial" />
       </div>
-
-      {/* Hero */}
-      <Card className="rounded-none border-0 bg-gray-200">
-        <CardContent>
-          <div className="mx-auto flex w-full flex-col justify-center-safe gap-8 md:flex-row xl:max-w-[1280px] 2xl:max-w-[1600px]">
-            <Card className="basis-1/3 border-0 bg-white">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-xl font-bold text-amber-500">
-                    Strategic Risks & Opportunities
-                  </h1>
-                  <p className="text-lg">
-                    Decide what's important, establish a clear roadmap for your
-                    organisation and achieve your security goals.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="basis-1/3 border-0 bg-white">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-xl font-bold text-amber-500">
-                    Efficient Control and Assurance
-                  </h1>
-                  <p className="text-lg">
-                    Use automation and AI to ensure operational control and
-                    assurance success.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="basis-1/3 border-0 bg-white">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-xl font-bold text-amber-500">
-                    Seamless Integration
-                  </h1>
-                  <p className="text-lg">
-                    Leverage the robust Azure, Power Platform and AI Modelverse
-                    features to integrate with your systems of choice.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </CardContent>
-      </Card>
     </Layout>
   );
 }
