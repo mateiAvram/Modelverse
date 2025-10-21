@@ -1,111 +1,99 @@
-import { Banner } from '@/components/app/content/banner';
-import { Layout } from '@/components/app/layout';
-import { Card, CardContent } from '@/components/ui/card';
+import { Banner } from '@/components/app/misc/banner';
 import { useNavigate } from 'react-router-dom';
+import infoFile from '@/data/about.yaml?raw';
+import { Layout } from '@/components/layout';
+import { parse } from 'yaml';
+
+type Message = {
+  caption: string;
+  message: string;
+};
+
+type Button = {
+  text: string;
+  url: string;
+};
+
+type Info = {
+  title: string;
+  message: string;
+  button: Button;
+  list: Message[];
+};
 
 const aboutBanner = (
   <Banner>
-    <h1 className="text-5xl font-bold text-white">About Modelverse</h1>
-    <p className="text-xl text-white">
+    <h1 className="text-4xl font-bold">About Modelverse</h1>
+    <p className="text-lg">
       Empowering organizations to navigate (cyber) security and sustainability
       risks with confidence and clarity.
     </p>
     <button
-      className="cursor-pointer rounded-md bg-white px-4 py-2 font-bold text-teal-500 hover:bg-gray-200"
+      className="cursor-pointer rounded-full bg-white px-4 py-2 font-bold transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/50"
       onClick={() =>
         (window.location.href =
           'https://outlook.office.com/bookwithme/user/d81d78745f8047d1a0ec05a07d8d40d6@modelverse.online/meetingtype/HEkH_Hmwx06JvFc-tP4ZJw2?anonymous')
       }
     >
-      Talk to us
+      <span className="bg-gradient-to-br from-green-500 to-teal-500 bg-clip-text text-transparent">
+        Talk to us
+      </span>
     </button>
   </Banner>
 );
 
 export function About() {
   const navigate = useNavigate();
-
+  const info = parse(infoFile);
   return (
     <Layout about={true} banner={aboutBanner}>
-      {/* Main content */}
-      <div className="mx-auto flex w-full grow flex-col items-center-safe justify-center-safe gap-4 px-6 text-center lg:max-w-[854px] xl:max-w-[1024px] 2xl:max-w-[1366px]">
-        <p className="text-xl italic">
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4">
+        <h1 className="text-center text-4xl font-bold">
+          We secure - you succeed!
+        </h1>
+        {info.map((item: Info, index: number) => (
+          <div
+            key={index}
+            className="group flex w-full flex-col items-center-safe justify-center-safe gap-8 rounded-lg bg-gradient-to-br from-green-500/10 to-teal-500/10 p-8"
+          >
+            <h1 className="group relative w-75/100 text-center text-2xl text-black">
+              <span className="relative z-10 font-bold text-amber-500">
+                {item.title}
+              </span>
+            </h1>
+            {item.message && <p className="text-sm">{item.message}</p>}
+            {item.list && (
+              <ul className="list-disc pl-5">
+                {item.list.map((listItem: Message, index: number) => (
+                  <li>
+                    <span className="font-bold">{listItem.caption}</span>{' '}
+                    {listItem.message}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {item.button && (
+              <button
+                className="transtion cursor-pointer rounded-full bg-gradient-to-br from-green-500 to-teal-500 px-4 py-2 font-bold text-white duration-300 hover:-translate-y-1 hover:bg-gray-200 hover:shadow-lg hover:shadow-green-500/50"
+                onClick={() => navigate(item.button.url)}
+              >
+                {item.button.text}
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4 text-center">
+        <h1 className="text-center text-4xl font-bold">Testimonial</h1>
+        <p className="italic">
           Modelverse is truly a gamechanger. It is a robust platform supporting
           my clients.
         </p>
-        <p className="text-xl font-bold italic">
+        <p className="text-lg font-bold italic">
           –Chris Hazewinkel, Certified Information Security Manager
         </p>
       </div>
-
-      {/* Hero */}
-      <Card className="rounded-none border-0 bg-gray-200">
-        <CardContent>
-          <div className="mx-auto flex w-full flex-col justify-center-safe gap-8 lg:flex-row xl:max-w-[1280px] 2xl:max-w-[1600px]">
-            <Card className="basis-1/3 border-0 bg-white">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-xl font-bold text-amber-500">
-                    Our Mission
-                  </h1>
-                  <p className="text-lg">
-                    At Modelverse, our mission is to make organisations more
-                    secure. We strive to deliver an efficient and effective
-                    platform that is both powerful and user-friendly, enabling
-                    organizations to protect their (digital) assets and maintain
-                    trust with their stakeholders.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="basis-1/3 border-0 bg-white">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-xl font-bold text-amber-500">Our Team</h1>
-                  <p className="text-lg">
-                    We are experienced professionals from diverse backgrounds,
-                    including cybersecurity, software development, and business
-                    strategy. Together, we are dedicated to create Modelverse
-                    that addresses the evolving challenges of the digital
-                    landscape.
-                  </p>
-                  <button
-                    className="cursor-pointer rounded-md border-2 border-teal-500 bg-white px-4 py-2 font-bold text-teal-500 hover:bg-gray-200"
-                    onClick={() => navigate('/team')}
-                  >
-                    More..
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="basis-1/3 border-0 bg-white">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-xl font-bold text-amber-500">
-                    Why Choose Us
-                  </h1>
-                  <ul className="list-disc pl-5 text-lg">
-                    <li>
-                      <span className="font-bold"> Expertise: </span>
-                      Deep knowledge in cybersecurity, IT, AI, risk management
-                      and business sectors.
-                    </li>
-                    <li>
-                      <span className="font-bold">Innovation: </span>
-                      Cutting-edge platform tailored to modern business needs.
-                    </li>
-                    <li>
-                      <span className="font-bold">Customer Focus: </span>
-                      Commitment to exceptional service and support.
-                    </li>
-                  </ul>
-                  <p className="text-lg"></p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </CardContent>
-      </Card>
     </Layout>
   );
 }
