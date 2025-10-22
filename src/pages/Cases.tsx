@@ -39,17 +39,15 @@ export function Cases() {
   type CaseComponentProps = {
     item: Case;
     index: number;
-    length: number;
     extendedCard?: boolean; // if you are using it in your component
   };
 
   const CaseComponent: React.FC<CaseComponentProps> = ({
     item,
     index,
-    length,
     extendedCard,
   }) => {
-    const { ref, inView, entry } = useInView({
+    const { ref, inView } = useInView({
       threshold: 0.8,
     });
 
@@ -105,7 +103,6 @@ export function Cases() {
                   key={index}
                   item={item}
                   index={index}
-                  length={cases.length}
                   extendedCard={extendedCard}
                 />
               ))}
