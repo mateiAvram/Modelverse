@@ -52,7 +52,7 @@ export function Home() {
         {info.map((item: Info, index: number) => (
           <div
             key={index}
-            className="group flex w-full flex-col items-center-safe justify-center-safe gap-8 rounded-lg bg-gradient-to-br from-green-500/20 to-teal-500/20 p-8"
+            className="group flex w-full flex-col items-center-safe justify-center-safe gap-8 rounded-lg bg-gradient-to-br from-green-500/10 to-teal-500/10 p-8"
           >
             <h1 className="group relative w-75/100 text-center text-2xl text-black">
               <span className="relative z-10 font-bold text-amber-500">

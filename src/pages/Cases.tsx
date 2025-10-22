@@ -76,7 +76,7 @@ export function Cases() {
 
   return (
     <Layout cases={true} banner={casesBanner}>
-      <div className="flex flex-col items-center-safe gap-8 p-4 w-full">
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4">
         <h1 className="text-center text-4xl font-bold">Our Clients</h1>
         <div
           className={`flex flex-row justify-center gap-8 w-full transition-card-height grow`}
@@ -97,7 +97,7 @@ export function Cases() {
             </svg>
           </button>
           <div className="flex flex-col items-center gap-4 w-full">
-            <div className="w-full flex flex-row overflow-x-scroll scrollbar-hide scroll-smooth snap-x snap-proximity justify-center-safe grow gap-4 px-32">
+            <div className="w-full flex flex-row overflow-x-scroll scrollbar-hide scroll-smooth snap-x snap-proximity justify-center-safe grow gap-4 px-32 touch-pan-x">
               {cases.map((item: Case, index: number) => (
                 <CaseComponent
                   key={index}
@@ -150,71 +150,6 @@ export function Cases() {
               )}
             </button>
           </div>
-          {/* <div className="flex flex-col">
-            <div className="flex flex-row overflow-x-auto scrollbar-hide w-full h-full items-center-safe snap-x snap-mandatory gap-8">
-              {cases.map((item: Case, index: number) => (
-                <div
-                  className={`flex flex-col items-center-safe shrink-0 w-64 grow snap-center gap-4 ${index == 0 ? 'ms-16' : ''} ${index == cases.length - 1 ? 'me-16' : ''}`}
-                  key={index}
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}${item.logo}`}
-                    alt={item.name}
-                    className="object-scale-down h-16"
-                  />
-                  <div
-                    className={`flex flex-col gap-4 text-sm transition-card-height overflow-hidden ${!extendedCard ? 'h-0' : 'h-96'}`}
-                  >
-                    <p>{item.about}</p>
-                    <p>{item.case}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button
-              onClick={handleCardBtn}
-              className="flex flex-row w-30 text-black/70 hover:text-black justify-between bg-clip-text cursor-pointer"
-            >
-              {!extendedCard ? (
-                <>
-                  <span>See more</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="size-6 ml-2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                    />
-                  </svg>
-                </>
-              ) : (
-                <>
-                  <span>See less</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="size-6 ml-2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                    />
-                  </svg>
-                </>
-              )}
-            </button>
-          </div> */}
-
           <button className="hidden rounded-full self-start mt-16">
             <svg
               xmlns="http://www.w3.org/2000/svg"
