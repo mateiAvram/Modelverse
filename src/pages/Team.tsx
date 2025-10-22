@@ -28,6 +28,7 @@ const teamBanner = (
 
 export function Team() {
   const info = parse(infoFile);
+  console.log(info);
   return (
     <Layout team={true} banner={teamBanner}>
       {info.map((team: Team, teamNumber: number) => (
@@ -45,7 +46,7 @@ export function Team() {
                 <div className="flex flex-row justify-start items-center gap-4 xl:flex-col xl:items-start">
                   <Avatar className="size-24">
                     <AvatarImage
-                      src={member.img || ''}
+                      src={`${import.meta.env.BASE_URL}${member.img}`}
                       className="object-cover"
                     />
                     <AvatarFallback>{member.name}</AvatarFallback>

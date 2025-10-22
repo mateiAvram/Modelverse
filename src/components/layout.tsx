@@ -63,7 +63,7 @@ export function Layout({
       ref={scrollRef}
     >
       <header
-        className={`shadow-md z-10 shrink-0 bg-white transition duration-300 md:${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`md:sticky md:top-0 shadow-md z-10 shrink-0 bg-white transition duration-300 ${!isVisible ? 'md:-translate-y-full' : 'md:translate-y-0'}`}
       >
         <NavBar
           home={home}

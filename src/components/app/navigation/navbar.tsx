@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import logo from '@/assets/logo.png';
 import { NavLink } from './navlink';
+import { useState } from 'react';
 
 type NavProps = {
   home: boolean;
