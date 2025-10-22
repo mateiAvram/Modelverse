@@ -1,6 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Banner } from '@/components/app/misc/banner';
-import { useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout';
 import infoFile from '@/data/team.yaml?raw';
 import { parse } from 'yaml';

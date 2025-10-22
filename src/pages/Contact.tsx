@@ -1,22 +1,7 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { GoogleMapEmbed } from '@/components/app/embed/googleMapEmbed';
 import { Banner } from '@/components/app/misc/banner';
-import { Link, useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout';
-import infoFile from '@/data/team.yaml?raw';
-import { parse } from 'yaml';
-
-type Member = {
-  name: string;
-  role: string;
-  bio: string;
-  img: string;
-};
-
-type Team = {
-  name: string;
-  members: Member[];
-};
+import { Link } from 'react-router-dom';
 
 const contactBanner = (
   <Banner>
@@ -28,7 +13,6 @@ const contactBanner = (
 );
 
 export function Contact() {
-  const info = parse(infoFile);
   const email: string = 'partners@modelverse.online';
   return (
     <Layout contact={true} banner={contactBanner}>
