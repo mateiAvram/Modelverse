@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import logo from '@/assets/logo.png';
 import { NavLink } from './navlink';
-import { useState } from 'react';
 
 type NavProps = {
   home: boolean;
@@ -9,7 +9,6 @@ type NavProps = {
   cases: boolean;
   team: boolean;
   contact: boolean;
-  isVisible: boolean;
 };
 
 export function NavBar({ home, about, cases, team, contact }: NavProps) {
@@ -25,12 +24,12 @@ export function NavBar({ home, about, cases, team, contact }: NavProps) {
   };
 
   return (
-    <div className="container mx-auto bg-white">
-      <div className="relative flex flex-row px-6 py-4 shadow-md">
+    <div className="container mx-auto bg-white flex flex-col md:flex-row md:items-center-safe md:justify-between">
+      <div className="relative flex flex-row px-6 py-4 shadow-md md:shadow-none">
         <img
           src={logo}
           alt="Modelverse"
-          className="mr-auto block h-16 w-auto cursor-pointer self-center object-contain md:h-32"
+          className="mr-auto block h-12 w-auto cursor-pointer self-center object-contain md:h-24"
           onClick={() => navigate('/')}
         />
         <svg
@@ -50,11 +49,11 @@ export function NavBar({ home, about, cases, team, contact }: NavProps) {
         </svg>
       </div>
       <div
-        className={`transition-nav-height overflow-hidden bg-white ${
+        className={`transition-nav-height overflow-hidden bg-white md:h-fit ${
           !extendedMenu ? 'h-0' : 'h-58'
         }`}
       >
-        <div className="m-4 flex flex-col">
+        <div className="m-4 flex flex-col md:flex-row">
           <NavLink url="/" active={home}>
             <svg
               xmlns="http://www.w3.org/2000/svg"

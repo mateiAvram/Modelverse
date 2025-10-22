@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { Banner } from '@/components/app/misc/banner';
 import infoFile from '@/data/cases.yaml?raw';
 import { Layout } from '@/components/layout';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { parse } from 'yaml';
 
 const casesBanner = (
@@ -36,80 +36,88 @@ export function Cases() {
     }
   };
 
-  type CaseComponentProps = {
-    item: Case;
-    index: number;
-    extendedCard?: boolean; // if you are using it in your component
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const handleBtnNext = () => {
+    if (!scrollerRef.current) return;
+    const container = scrollerRef.current;
+
+    // Scroll by one item width
+    const scrollAmount = 48; // or customize, e.g., 300
+    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
-  const CaseComponent: React.FC<CaseComponentProps> = ({
-    item,
-    index,
-    extendedCard,
-  }) => {
-    const { ref, inView } = useInView({
-      threshold: 0.8,
-    });
+  const handleBtnPrev = () => {
+    if (!scrollerRef.current) return;
+    const container = scrollerRef.current;
 
-    return (
-      <div
-        className={`flex flex-col shrink-0 grow snap-center snap-always w-48 gap-2 overflow-y-scroll transition-transform duration-200 ${inView ? 'scale-100 opacity-100' : 'scale-75 opacity-50'}`}
-        key={index}
-        ref={ref}
-      >
-        <img
-          src={`${import.meta.env.BASE_URL}${item.logo}`}
-          alt={item.name}
-          className="object-scale-down h-12 sticky"
-        />
-        <ScrollArea
-          className={`px-4 transition-card-height text-sm ${!extendedCard ? 'h-0' : 'h-48'}`}
-        >
-          {item.about}
-          <br />
-          <br />
-          {item.case}
-        </ScrollArea>
-      </div>
-    );
+    const firstChild = container.children[0] as HTMLElement;
+    if (!firstChild) return;
+
+    const scrollAmount = firstChild.getBoundingClientRect().width;
+    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   };
-
   return (
     <Layout cases={true} banner={casesBanner}>
-      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4">
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 mx-4 md:mx-32">
         <h1 className="text-center text-4xl font-bold">Our Clients</h1>
-        <div
-          className={`flex flex-row justify-center gap-8 w-full transition-card-height grow`}
-        >
-          <button className="hidden rounded-full self-start mt-16">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              className="size-8 stroke-amber-500/70 hover:stroke-amber-500"
+        <div className="flex flex-row justify-center gap-8 w-full overflow-hidden">
+          <div className="hidden lg:flex justify-center-safe items-center-safe lg:w-1/10">
+            <button
+              className=" rounded-full self-center outline-none"
+              onClick={handleBtnPrev}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-              />
-            </svg>
-          </button>
-          <div className="flex flex-col items-center gap-4 w-full">
-            <div className="w-full flex flex-row overflow-x-scroll scrollbar-hide scroll-smooth snap-x snap-proximity justify-center-safe grow gap-4 px-32 touch-pan-x">
-              {cases.map((item: Case, index: number) => (
-                <CaseComponent
-                  key={index}
-                  item={item}
-                  index={index}
-                  extendedCard={extendedCard}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                className="size-12 stroke-amber-500/70 hover:stroke-amber-500"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                 />
-              ))}
+              </svg>
+            </button>
+          </div>
+
+          <div className="flex flex-col items-center gap-4 w-full lg:w-8/10">
+            <div
+              className="flex flex-row overflow-x-scroll scrollbar-hide scroll-smooth snap-x snap-proximity w-full gap-4 px-32 md:px-48 lg:px-0 xl:px-24 2xl:px-0 lg:overflow-x-hidden"
+              ref={scrollerRef}
+            >
+              {cases.map((item: Case, index: number) => {
+                const { ref, inView } = useInView({
+                  threshold: 0.9,
+                });
+
+                return (
+                  <div
+                    className={`flex flex-col shrink-0 snap-center snap-always w-48 gap-2 transition-transform duration-300 ${inView ? 'scale-100 opacity-100' : 'scale-75 opacity-50'}`}
+                    key={index}
+                    ref={ref}
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}${item.logo}`}
+                      alt={item.name}
+                      className="object-scale-down h-16"
+                    />
+                    <ScrollArea
+                      className={`px-4 transition-card-height text-sm ${!extendedCard ? 'h-0' : 'h-48'} md:h-48`}
+                    >
+                      {item.about}
+                      <br />
+                      <br />
+                      {item.case}
+                    </ScrollArea>
+                  </div>
+                );
+              })}
             </div>
             <button
               onClick={handleCardBtn}
-              className="flex flex-row w-fit text-black/70 hover:text-black bg-clip-text cursor-pointer outline-0"
+              className="flex flex-row w-fit text-black/70 hover:text-black bg-clip-text cursor-pointer outline-0 md:hidden"
             >
               {!extendedCard ? (
                 <>
@@ -150,25 +158,30 @@ export function Cases() {
               )}
             </button>
           </div>
-          <button className="hidden rounded-full self-start mt-16">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              className="size-8 stroke-amber-500/70 hover:stroke-amber-500"
+          <div className="hidden lg:flex justify-center-safe items-center-safe lg:w-1/10">
+            <button
+              className="rounded-full self-center outline-none"
+              onClick={handleBtnNext}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                className="size-12 stroke-amber-500/70 hover:stroke-amber-500"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4 text-center">
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 mx-4 md:mx-32 xl:mx-64 text-center">
         <h1 className="text-center text-4xl font-bold">Testimonial</h1>
         <p className="italic">
           Reshma and the Team has helped us close our security gaps.

@@ -32,17 +32,17 @@ export function Team() {
     <Layout team={true} banner={teamBanner}>
       {info.map((team: Team, teamNumber: number) => (
         <div
-          className="flex flex-col items-center-safe justify-center-safe gap-8 p-4"
+          className="flex flex-col items-center-safe justify-center-safe gap-8 mx-4 md:mx-32"
           key={teamNumber}
         >
           <h1 className="text-center text-4xl font-bold">{team.name}</h1>
-          <div className="grid grid-cols-1 w-full gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 w-full gap-8">
             {team.members.map((member: Member, memberNumber: number) => (
               <div
                 className="rounded-lg bg-gradient-to-br from-green-500/10 to-teal-500/10 flex flex-col gap-8 w-full p-8"
                 key={memberNumber}
               >
-                <div className="flex flex-row justify-start items-center gap-4">
+                <div className="flex flex-row justify-start items-center gap-4 xl:flex-col xl:items-start">
                   <Avatar className="size-24">
                     <AvatarImage
                       src={member.img || ''}

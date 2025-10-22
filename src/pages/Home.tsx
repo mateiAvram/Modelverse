@@ -47,24 +47,24 @@ export function Home() {
 
   return (
     <Layout home={true} banner={homeBanner}>
-      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4">
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 mx-4 md:mx-32">
         <h1 className="text-center text-4xl font-bold">Why Modelverse?</h1>
-        {info.map((item: Info, index: number) => (
-          <div
-            key={index}
-            className="group flex w-full flex-col items-center-safe justify-center-safe gap-8 rounded-lg bg-gradient-to-br from-green-500/10 to-teal-500/10 p-8"
-          >
-            <h1 className="group relative w-75/100 text-center text-2xl text-black">
-              <span className="relative z-10 font-bold text-amber-500">
+        <div className="flex flex-col gap-8 lg:flex-row">
+          {info.map((item: Info, index: number) => (
+            <div
+              key={index}
+              className="group flex w-full flex-col items-center-safe gap-8 rounded-lg bg-gradient-to-br from-green-500/10 to-teal-500/10 p-8 basis-1/3"
+            >
+              <h1 className="font-bold text-center text-2xl text-amber-500">
                 {item.title}
-              </span>
-            </h1>
-            {item.message && <p className="text-sm">{item.message}</p>}
-          </div>
-        ))}
+              </h1>
+              {item.message && <p className="text-sm">{item.message}</p>}
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="flex flex-col items-center-safe justify-center-safe gap-8 p-4 text-center">
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 mx-4 md:mx-32 xl:mx-64 text-center">
         <h1 className="text-center text-4xl font-bold">Testimonial</h1>
         <p className="italic">
           Modelverse has transformed our approach to cybersecurity risk

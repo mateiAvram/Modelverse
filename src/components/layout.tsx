@@ -62,21 +62,23 @@ export function Layout({
       className="scrollbar-hide flex h-screen w-screen flex-col overflow-auto bg-gradient-to-br from-green-500 to-teal-500"
       ref={scrollRef}
     >
-      <header className="sticky z-10 shrink-0 bg-white">
+      <header
+        className={`shadow-md z-10 shrink-0 bg-white transition duration-300 md:${isVisible ? 'translate-y-0' : '-translate-y-full'}`}
+      >
         <NavBar
           home={home}
           about={about}
           cases={cases}
           team={team}
           contact={contact}
-          isVisible={isVisible}
         />
       </header>
 
       {banner}
-      <div className="container mx-auto flex grow flex-col gap-32 bg-gray-50 py-16">
+      <div className="container mx-auto flex grow flex-col justify-around gap-16 bg-gray-50 py-16 xl:rounded-t-lg">
         {children}
       </div>
+      {/* <div className="hidden container mx-auto h-64 xl:block shrink-0"></div> */}
       <footer className="shrink-0 bg-white">
         <Footer />
       </footer>

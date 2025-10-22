@@ -16,7 +16,7 @@ export function Contact() {
   const email: string = 'partners@modelverse.online';
   return (
     <Layout contact={true} banner={contactBanner}>
-      <div className="grid grid-cols-1 gap-8 p-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-4 md:mx-32">
         <div className=" flex flex-col p-8 rounded-lg bg-gradient-to-br from-green-500/10 to-teal-500/10 gap-8">
           <h1 className="text-2xl text-amber-500 font-bold">Get in Touch</h1>
           <div>
