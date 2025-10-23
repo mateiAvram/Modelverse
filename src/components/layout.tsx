@@ -1,4 +1,3 @@
-import { CookieBanner } from './app/cookies/cookieBanner';
 import { useEffect, useRef, useState } from 'react';
 import { NavBar } from './app/navigation/navbar';
 import { Footer } from './app/footer/footer';
