@@ -1,3 +1,4 @@
+import { CookieBanner } from './app/cookies/cookieBanner';
 import { useEffect, useRef, useState } from 'react';
 import { NavBar } from './app/navigation/navbar';
 import { Footer } from './app/footer/footer';
@@ -78,7 +79,7 @@ export function Layout({
       <div className="container mx-auto flex grow flex-col justify-around gap-16 bg-gray-50 py-16 xl:rounded-t-lg">
         {children}
       </div>
-      {/* <div className="hidden container mx-auto h-64 xl:block shrink-0"></div> */}
+
       <footer className="shrink-0 bg-white">
         <Footer />
       </footer>

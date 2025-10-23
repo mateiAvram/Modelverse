@@ -99,14 +99,15 @@ const Carousel = () => {
 
             return (
               <div
-                className={`flex flex-col shrink-0 snap-center snap-always w-48 gap-2 transition-transform duration-300 ${inView ? 'scale-100 opacity-100' : 'scale-75 opacity-50'}`}
+                className={`flex flex-col shrink-0 snap-center snap-always w-48 gap-2 md:bg-gradient-to-br from-green-500/10 to-teal-500/10 md:rounded-lg transition-transform duration-300 ${inView ? 'scale-100 opacity-100' : 'scale-75 opacity-50'}`}
                 key={index}
                 ref={ref}
               >
                 <img
                   src={`${import.meta.env.BASE_URL}${item.logo}`}
                   alt={item.name}
-                  className="object-scale-down h-16"
+                  className="object-scale-down h-16 md:rounded-t-lg md:shadow-sm md:p-2"
+                  onClick={() => (window.location.href = item.url)}
                 />
                 <ScrollArea
                   className={`px-4 transition-card-height text-sm ${!extendedCard ? 'h-0' : 'h-48'} md:h-48`}

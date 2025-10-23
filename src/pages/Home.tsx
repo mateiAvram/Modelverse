@@ -35,7 +35,7 @@ const homeBanner = (
           'https://outlook.office.com/bookwithme/user/d81d78745f8047d1a0ec05a07d8d40d6@modelverse.online/meetingtype/HEkH_Hmwx06JvFc-tP4ZJw2?anonymous')
       }
     >
-      <div className="bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">
+      <div className="bg-gradient-to-br from-green-500 to-teal-500 bg-clip-text text-transparent">
         Book a Demo
       </div>
     </button>

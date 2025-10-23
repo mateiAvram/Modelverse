@@ -73,7 +73,7 @@ export function About() {
               )}
               {item.button && (
                 <button
-                  className="transtion cursor-pointer rounded-full bg-gradient-to-br from-green-500 to-teal-500 px-4 py-2 font-bold text-white duration-300 hover:-translate-y-1 hover:bg-gray-200 hover:shadow-lg hover:shadow-green-500/50"
+                  className="transtion cursor-pointer rounded-full bg-gradient-to-br from-green-500 to-teal-500 px-4 py-2 font-bold text-white duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-500/50"
                   onClick={() => navigate(item.button.url)}
                 >
                   {item.button.text}
