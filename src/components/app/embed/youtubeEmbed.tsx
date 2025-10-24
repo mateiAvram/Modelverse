@@ -19,7 +19,7 @@ const YouTubeEmbed: React.FC<YouTubeEmbedProps> = ({ videoId, title }) => {
           allowFullScreen
         ></iframe>
       ) : (
-        <div className="absolute top-0 left-0 bg-gray-100 h-full w-full flex flex-col justify-center-safe items-center-safe gap-2 p-8">
+        <div className="absolute top-0 left-0 bg-gray-100 h-full w-full flex flex-col justify-center-safe items-center-safe gap-2 p-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
