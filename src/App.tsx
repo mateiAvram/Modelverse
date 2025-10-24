@@ -1,5 +1,5 @@
 import { CookieBanner } from './components/app/cookies/cookieBanner';
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Contact } from './pages/Contact';
 import { Cases } from './pages/Cases';
 import { About } from './pages/About';
@@ -9,7 +9,7 @@ import './App.css';
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <CookieBanner></CookieBanner>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -18,7 +18,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
