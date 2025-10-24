@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Firebase beta channel
+      - name: Deploy to Firebase live channel
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
