@@ -28,7 +28,6 @@ const teamBanner = (
 
 export function Team() {
   const info = parse(infoFile);
-  console.log(info);
   return (
     <Layout team={true} banner={teamBanner}>
       {info.map((team: Team, teamNumber: number) => (
