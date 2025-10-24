@@ -16,9 +16,10 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22.x
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Set Build ENV variable
         run: echo "VITE_BUILD_SHA=$(git rev-parse --short=7 HEAD)" >> $GITHUB_ENV
@@ -26,5 +27,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Verify build
-        run: ls -R ./dist
+      - name: Deploy to Firebase beta channel
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_TRIVERSE_E5CE1 }}
+          projectId: triverse-e5ce1
+          channelId: live

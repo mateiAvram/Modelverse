@@ -1,25 +1,16 @@
-import { Routes, Route } from "react-router-dom";
-import { HashRouter } from "react-router-dom";
-// import { BrowserRouter } from "react-router-dom";
-import { Home } from "./pages/Home";
-import "./App.css";
-import { About } from "./pages/About";
-import { Cases } from "./pages/Cases";
-import { Team } from "./pages/Team";
-import { Contact } from "./pages/Contact";
+import { CookieBanner } from './components/app/cookies/cookieBanner';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Contact } from './pages/Contact';
+import { Cases } from './pages/Cases';
+import { About } from './pages/About';
+import { Team } from './pages/Team';
+import { Home } from './pages/Home';
+import './App.css';
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<Home />} />
-    //     <Route path="/about" element={<About />} />
-    //     <Route path="/cases" element={<Cases />} />
-    //     <Route path="/team" element={<Team />} />
-    //     <Route path="/contact" element={<Contact />} />
-    //   </Routes>
-    // </BrowserRouter>
     <HashRouter>
+      <CookieBanner></CookieBanner>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

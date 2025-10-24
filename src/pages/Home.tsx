@@ -1,86 +1,80 @@
-import { Layout } from "@/components/app/Layout";
-import YouTubeEmbed from "@/components/app/YoutubeEmbed";
-import { Card, CardContent } from "@/components/ui/card";
+import YouTubeEmbed from '@/components/app/embed/youtubeEmbed';
+import { Banner } from '@/components/app/misc/banner';
+import { Layout } from '@/components/layout';
+import infoFile from '@/data/home.yaml?raw';
+import { parse } from 'yaml';
+
+type Message = {
+  caption: string;
+  message: string;
+};
+
+type Button = {
+  text: string;
+  url: string;
+};
+
+type Info = {
+  title: string;
+  message: string;
+  button: Button;
+  list: Message[];
+};
+
+const homeBanner = (
+  <Banner>
+    <h1 className="text-4xl font-bold">Secure Your Future</h1>
+    <p className="text-lg">
+      Manage Security, Safety and Sustainability with the unique, modern
+      Modelverse Solution.
+    </p>
+    <button
+      className="cursor-pointer rounded-full bg-white px-4 py-2 font-bold transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/50"
+      onClick={() =>
+        (window.location.href =
+          'https://outlook.office.com/bookwithme/user/d81d78745f8047d1a0ec05a07d8d40d6@modelverse.online/meetingtype/HEkH_Hmwx06JvFc-tP4ZJw2?anonymous')
+      }
+    >
+      <div className="bg-gradient-to-br from-green-500 to-teal-500 bg-clip-text text-transparent">
+        Book a Demo
+      </div>
+    </button>
+  </Banner>
+);
 
 export function Home() {
-  return (
-    <Layout home={true}>
-      {/* Hero */}
-      <Card className="border-0 rounded-none bg-teal-500">
-        <CardContent>
-          <div className="flex flex-col justify-center-safe items-center-safe gap-8">
-            <h1 className="text-white text-5xl font-bold">
-              Secure Your Future
-            </h1>
-            <p className="text-white text-xl">
-              Manage Security, Safety and Sustainability with the unique, modern
-              Modelverse Solution.
-            </p>
-            <button className="py-2 px-4 rounded-md bg-white text-teal-500 font-bold hover:bg-gray-200 cursor-pointer">
-              Book a Demo
-            </button>
-          </div>
-        </CardContent>
-      </Card>
+  const info = parse(infoFile);
 
-      {/* Main content */}
-      <div className="grow flex flex-col mx-96 items-center-safe gap-4">
-        <YouTubeEmbed videoId="XEPf418PJFU" title="Fellowmind Testimonial" />
-        <p className="text-xl italic">
+  return (
+    <Layout home={true} banner={homeBanner}>
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 mx-4 md:mx-32">
+        <h1 className="text-center text-4xl font-bold">Why Modelverse?</h1>
+        <div className="flex flex-col gap-8 lg:flex-row">
+          {info.map((item: Info, index: number) => (
+            <div
+              key={index}
+              className="group flex w-full flex-col items-center-safe gap-8 rounded-lg bg-gradient-to-br from-green-500/10 to-teal-500/10 p-8 basis-1/3"
+            >
+              <h1 className="font-bold text-center text-2xl text-amber-500">
+                {item.title}
+              </h1>
+              {item.message && <p className="text-sm">{item.message}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center-safe justify-center-safe gap-8 mx-4 md:mx-32 xl:mx-64 text-center">
+        <h1 className="text-center text-4xl font-bold">Testimonial</h1>
+        <p className="italic">
           Modelverse has transformed our approach to cybersecurity risk
           management.
         </p>
-        <p className="text-xl italic font-bold">
+        <p className="text-lg font-bold italic">
           –David Warnink, CIO, Fellowmind
         </p>
+        <YouTubeEmbed videoId="XEPf418PJFU" title="Fellowmind Testimonial" />
       </div>
-
-      {/* Hero */}
-      <Card className="border-0 rounded-none bg-gray-200 px-64">
-        <CardContent>
-          <div className="flex flex-row gap-8">
-            <Card className="border-0 bg-white basis-1/3">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-amber-500 text-xl font-bold">
-                    Strategic Risks & Opportunities
-                  </h1>
-                  <p className="text-lg">
-                    Decide what's important, establish a clear roadmap for your
-                    organisation and achieve your security goals.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border-0 bg-white basis-1/3">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-amber-500 text-xl font-bold">
-                    Efficient Control and Assurance
-                  </h1>
-                  <p className="text-lg">
-                    Use automation and AI to ensure operational control and
-                    assurance success.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="border-0  bg-white basis-1/3">
-              <CardContent>
-                <div className="flex flex-col gap-4">
-                  <h1 className="text-amber-500 text-xl font-bold">
-                    Seamless Integration
-                  </h1>
-                  <p className="text-lg">
-                    Leverage the robust Azure, Power Platform and AI Modelverse
-                    features to integrate with your systems of choice.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </CardContent>
-      </Card>
     </Layout>
   );
 }
