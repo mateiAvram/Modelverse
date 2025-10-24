@@ -1,6 +1,5 @@
 import { useCookieConsent } from '@/hooks/cookies/useCookieConsent';
 import CookieConsent, { Cookies } from 'react-cookie-consent';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { useEffect, useState } from 'react';
 
 function innerAcceptButton() {
